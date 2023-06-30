@@ -10,9 +10,10 @@ class TableColumn {
   TableColumn({required this.name, this.type});
 }
 
+
 class MutationTable extends StatelessWidget {
-  final List<List<String>> data; // Dữ liệu đổ vào bảng
-  final List<TableColumn> columns;
+  List<TableColumn> columns;
+  List<List<String>> data;
 
   MutationTable({required this.data, required this.columns});
 
