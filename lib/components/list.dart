@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_traning/constants/color.dart';
+import 'package:mobile_traning/utils/logger.dart';
 
 enum ColumnType { text, number }
 
 class TableColumn {
   final String name;
+  final String label;
   ColumnType? type = ColumnType.text;
 
-  TableColumn({required this.name, this.type});
+  TableColumn({required this.name,required this.label, this.type});
 }
-
 
 class MutationTable extends StatelessWidget {
   List<TableColumn> columns;
-  List<List<String>> data;
+  List<Map<String, dynamic>> data;
 
   MutationTable({required this.data, required this.columns});
 
@@ -36,7 +37,7 @@ class MutationTable extends StatelessWidget {
                       alignment: cell.type != ColumnType.number
                           ? Alignment.centerLeft
                           : Alignment.centerRight,
-                      child: Text(cell.name,
+                      child: Text(cell.label,
                           style: TextStyle(color: colors.textSecondaryColor)),
                     ),
                   );
@@ -64,20 +65,24 @@ class MutationTable extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        ...data[index].map((cell) {
-                          return Expanded(
-                            flex: 2,
-                            child: Container(
-                              alignment: int.tryParse(cell) == null
-                                  ? Alignment.centerLeft
-                                  : Alignment.centerRight,
-                              child: Text(cell,
-                                  style: TextStyle(
-                                      color: cell.contains('-')
-                                          ? colors.textSecondaryColor
-                                          : colors.textPrimaryColor)),
-                            ),
-                          );
+                        ...data[index].entries.map((field) {
+                          if (columns
+                              .any((element) => element.name == field.key))
+                            return Expanded(
+                              flex: 2,
+                              child: Container(
+                                alignment: int.tryParse(field.value) == null
+                                    ? Alignment.centerLeft
+                                    : Alignment.centerRight,
+                                child: Text(field.value,
+                                    style: TextStyle(
+                                        color: field.value.contains('-')
+                                            ? colors.textSecondaryColor
+                                            : colors.textPrimaryColor)),
+                              ),
+                            );
+                          else
+                            return Container();
                         }).toList(),
                         Expanded(
                             child: Container(

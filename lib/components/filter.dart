@@ -5,10 +5,12 @@ import '../constants/color.dart';
 class Filter extends StatelessWidget {
   final String label;
   final bool isSelected;
+  VoidCallback? onTap = () {};
 
-  const Filter({
+  Filter({
     required this.label,
     required this.isSelected,
+    this.onTap,
   });
 
   @override
@@ -21,13 +23,16 @@ class Filter extends StatelessWidget {
         color: isSelected ? colors.secondaryBackgroundColor : null,
         borderRadius: BorderRadius.circular(4),
       ),
-      child: Text(
-        label,
-        style: TextStyle(
-          color: isSelected ? colors.textPrimaryColor : colors.textSecondaryColor,
-          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-          fontSize: 12,
-          height: 16 / 12,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Text(
+          label,
+          style: TextStyle(
+            color: isSelected ? colors.textPrimaryColor : colors.textSecondaryColor,
+            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+            fontSize: 12,
+            height: 16 / 12,
+          ),
         ),
       ),
     );

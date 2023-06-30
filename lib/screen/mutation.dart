@@ -6,47 +6,133 @@ import '../components/option.dart';
 import '../components/pagination.dart';
 import '../components/searchBar.dart';
 
-const tableData = [
-  ["ABC", "09:30-00:00", '5000'],
-  ["XYZ", "11:45-00:00", '3000'],
-  ["DEF", "14:15-00:00", '7000'],
-  ["GHI", "10:00-00:00", '2000'],
-  ["JKL", "13:30-00:00", '4000'],
-  ["MNO", "16:45-00:00", '6000'],
-  ["PQR", "09:00-00:00", '1500'],
-  ["STU", "12:30-00:00", '8000'],
-  ["VWX", "14:45-00:00", '2500'],
-  ["YZA", "11:15-00:00", '3500'],
-  ["BCD", "15:30-00:00", '4500'],
-  ["EFG", "10:45-00:00", '6000'],
-  ["HIJ", "13:15-00:00", '4000'],
-  ["KLM", "09:30-00:00", '5500'],
-  ["NOP", "11:00-00:00", '2800'],
-  ["QRS", "14:30-00:00", '4200'],
-  ["TUV", "10:15-00:00", '3800'],
-  ["WXY", "12:00-00:00", '5100'],
-  ["ZAB", "15:45-00:00", '3200'],
-  ["CDE", "09:30-00:00", '4700'],
-  ["ABC", "09:30-00:00", '5000'],
-  ["XYZ", "11:45-00:00", '3000'],
-  ["DEF", "14:15-00:00", '7000'],
-  ["GHI", "10:00-00:00", '2000'],
-  ["JKL", "13:30-00:00", '4000'],
-  ["MNO", "16:45-00:00", '6000'],
-  ["PQR", "09:00-00:00", '1500'],
-  ["STU", "12:30-00:00", '8000'],
-  ["VWX", "14:45-00:00", '2500'],
-  ["YZA", "11:15-00:00", '3500'],
-  ["BCD", "15:30-00:00", '4500'],
-  ["EFG", "10:45-00:00", '6000'],
-  ["HIJ", "13:15-00:00", '4000'],
-  ["KLM", "09:30-00:00", '5500'],
-  ["NOP", "11:00-00:00", '2800'],
-  ["QRS", "14:30-00:00", '4200'],
-  ["TUV", "10:15-00:00", '3800'],
-  ["WXY", "12:00-00:00", '5100'],
-  ["ZAB", "15:45-00:00", '3200'],
-  ["CDE1", "09:30-00:00", '4700']
+const data = [
+  {
+    'code': 'ABC',
+    'session': '09:30-00:00',
+    'volume': '1000',
+    'floor': 'HOSE',
+  },
+  {
+    'code': 'XYZ',
+    'session': '11:45-00:00',
+    'volume': '2000',
+    'floor': 'HNX',
+  },
+  {
+    'code': 'DEF',
+    'session': '14:15-00:00',
+    'volume': '3000',
+    'floor': 'UPCOM',
+  },
+  {
+    'code': 'ABC',
+    'session': '09:30-00:00',
+    'volume': '1000',
+    'floor': 'HOSE',
+  },
+  {
+    'code': 'XYZ',
+    'session': '11:45-00:00',
+    'volume': '2000',
+    'floor': 'HNX',
+  },
+  {
+    'code': 'DEF',
+    'session': '14:15-00:00',
+    'volume': '3000',
+    'floor': 'UPCOM',
+  },
+  {
+    'code': 'ABC',
+    'session': '09:30-00:00',
+    'volume': '1000',
+    'floor': 'HOSE',
+  },
+  {
+    'code': 'XYZ',
+    'session': '11:45-00:00',
+    'volume': '2000',
+    'floor': 'HNX',
+  },
+  {
+    'code': 'DEF',
+    'session': '14:15-00:00',
+    'volume': '3000',
+    'floor': 'UPCOM',
+  },
+  {
+    'code': 'ABC',
+    'session': '09:30-00:00',
+    'volume': '1000',
+    'floor': 'HOSE',
+  },
+  {
+    'code': 'XYZ',
+    'session': '11:45-00:00',
+    'volume': '2000',
+    'floor': 'HNX',
+  },
+  {
+    'code': 'DEF',
+    'session': '14:15-00:00',
+    'volume': '3000',
+    'floor': 'UPCOM',
+  },
+  {
+    'code': 'ABC',
+    'session': '09:30-00:00',
+    'volume': '1000',
+    'floor': 'HOSE',
+  },
+  {
+    'code': 'XYZ',
+    'session': '11:45-00:00',
+    'volume': '2000',
+    'floor': 'HNX',
+  },
+  {
+    'code': 'DEF',
+    'session': '14:15-00:00',
+    'volume': '3000',
+    'floor': 'UPCOM',
+  },
+  {
+    'code': 'ABC',
+    'session': '09:30-00:00',
+    'volume': '1000',
+    'floor': 'HOSE',
+  },
+  {
+    'code': 'XYZ',
+    'session': '11:45-00:00',
+    'volume': '2000',
+    'floor': 'HNX',
+  },
+  {
+    'code': 'DEF',
+    'session': '14:15-00:00',
+    'volume': '3000',
+    'floor': 'UPCOM',
+  },
+  {
+    'code': 'DGF',
+    'session': '14:15-00:00',
+    'volume': '3000',
+    'floor': 'UPCOM',
+  },
+  {
+    'code': 'LEF',
+    'session': '14:15-00:00',
+    'volume': '3000',
+    'floor': 'UPCOM',
+  },
+  {
+    'code': 'DGL',
+    'session': '14:15-00:00',
+    'volume': '3000',
+    'floor': 'UPCOM',
+  },
 ];
 
 class Mutation extends StatefulWidget {
@@ -60,14 +146,21 @@ class _MutationState extends State<Mutation> {
   String searchKey = '';
   int sessionDisplay = 5;
   bool beforeATCCheck = false;
+  String floor = 'ALL';
   int currentPage = 1;
-  List<List<String>> get tableDataFiltered {
-    if (searchKey == '') {
-      return tableData;
+  List<Map<String, dynamic>> get filterdMutationList {
+    final mutationList = floor == 'ALL'
+        ? data
+        //if not all
+        : data.where((element) => element['floor'] == floor).toList();
+    if (searchKey.isNotEmpty) {
+      return mutationList
+          .where((element) =>
+              element['code'].toString().toLowerCase().contains(searchKey))
+          .toList();
+    } else {
+      return mutationList.toList();
     }
-    return tableData.where((row) {
-      return row.any((cell) => cell.toLowerCase().contains(searchKey.toLowerCase()));
-    }).toList();
   }
 
   @override
@@ -109,6 +202,7 @@ class _MutationState extends State<Mutation> {
                     setState(() => {
                           sessionDisplay = 5,
                           beforeATCCheck = false,
+                          currentPage = 1,
                         })
                   },
                 ),
@@ -119,6 +213,7 @@ class _MutationState extends State<Mutation> {
                     setState(() => {
                           sessionDisplay = 20,
                           beforeATCCheck = false,
+                          currentPage = 1,
                         })
                   },
                 ),
@@ -126,7 +221,11 @@ class _MutationState extends State<Mutation> {
                   label: '20 Phiên trước ATC',
                   isSelected: sessionDisplay == 20 && beforeATCCheck == true,
                   onTap: () => {
-                    setState(() => {sessionDisplay = 20, beforeATCCheck = true})
+                    setState(() => {
+                          sessionDisplay = 20,
+                          beforeATCCheck = true,
+                          currentPage = 1,
+                        })
                   },
                 ),
               ],
@@ -136,38 +235,61 @@ class _MutationState extends State<Mutation> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Filter(
-                  label: 'Tất cả',
-                  isSelected: true,
-                ),
+                    label: 'Tất cả',
+                    isSelected: floor == 'ALL',
+                    onTap: () => setState(
+                          () => {
+                            floor = 'ALL',
+                            currentPage = 1,
+                          },
+                        )),
                 Filter(
                   label: 'HOSE',
-                  isSelected: false,
+                  isSelected: floor == 'HOSE',
+                  onTap: () => setState(
+                    () => {floor = 'HOSE', currentPage = 1},
+                  ),
                 ),
                 Filter(
                   label: 'HNX',
-                  isSelected: false,
+                  isSelected: floor == 'HNX',
+                  onTap: () => setState(
+                    () => {
+                      floor = 'HNX',
+                      currentPage = 1,
+                    },
+                  ),
                 ),
                 Filter(
                   label: 'UPCOM',
-                  isSelected: false,
+                  isSelected: floor == 'UPCOM',
+                  onTap: () => setState(() => {
+                        floor = 'UPCOM',
+                        currentPage = 1,
+                      }),
                 ),
               ],
             ),
             MutationTable(
-                data: tableDataFiltered.length >= sessionDisplay
-                    ? tableDataFiltered.sublist(
-                        (currentPage - 1) * sessionDisplay,
-                        currentPage * sessionDisplay)
-                    : tableDataFiltered,
+                data: filterdMutationList.length >= sessionDisplay
+                    ? filterdMutationList
+                        .skip(
+                          (currentPage - 1) * sessionDisplay,
+                        )
+                        .take(sessionDisplay)
+                        .toList()
+                    : filterdMutationList,
                 columns: [
-                  new TableColumn(name: 'Mã'),
-                  new TableColumn(name: 'Thời gian'),
+                  new TableColumn(name: 'code', label: 'Mã'),
+                  new TableColumn(name: 'session', label: 'Thời gian'),
                   new TableColumn(
-                      name: 'Khối lượng GD', type: ColumnType.number),
+                      name: 'volume',
+                      label: 'Khối lượng GD',
+                      type: ColumnType.number),
                 ]),
             PaginationBar(
               currentPage: currentPage,
-              totalPages: (tableData.length / sessionDisplay).ceil(),
+              totalPages: (filterdMutationList.length / sessionDisplay).ceil(),
               onPageSelected: (page) => {setState(() => currentPage = page)},
             )
           ],
