@@ -61,6 +61,15 @@ class _MutationState extends State<Mutation> {
   int sessionDisplay = 5;
   bool beforeATCCheck = false;
   int currentPage = 1;
+  List<List<String>> get tableDataFiltered {
+    if (searchKey == '') {
+      return tableData;
+    }
+    return tableData.where((row) {
+      return row.any((cell) => cell.toLowerCase().contains(searchKey.toLowerCase()));
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -145,15 +154,11 @@ class _MutationState extends State<Mutation> {
               ],
             ),
             MutationTable(
-                data: tableData
-                    .where((List<String> element) => searchKey.isNotEmpty
-                        ? element[0]
-                            .toLowerCase()
-                            .contains(searchKey.toLowerCase())
-                        : true)
-                    .toList()
-                    .sublist((currentPage - 1) * sessionDisplay,
-                        currentPage * sessionDisplay),
+                data: tableDataFiltered.length >= sessionDisplay
+                    ? tableDataFiltered.sublist(
+                        (currentPage - 1) * sessionDisplay,
+                        currentPage * sessionDisplay)
+                    : tableDataFiltered,
                 columns: [
                   new TableColumn(name: 'Mã'),
                   new TableColumn(name: 'Thời gian'),
