@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_traning/components/filter.dart';
-import 'package:mobile_traning/utils/logger.dart';
 
 import '../components/list.dart';
 import '../components/option.dart';
@@ -47,7 +46,7 @@ const tableData = [
   ["TUV", "10:15-00:00", '3800'],
   ["WXY", "12:00-00:00", '5100'],
   ["ZAB", "15:45-00:00", '3200'],
-  ["CDE", "09:30-00:00", '4700']
+  ["CDE1", "09:30-00:00", '4700']
 ];
 
 class Mutation extends StatefulWidget {
@@ -58,7 +57,10 @@ class Mutation extends StatefulWidget {
 }
 
 class _MutationState extends State<Mutation> {
-  String searchKey='';
+  String searchKey = '';
+  int sessionDisplay = 5;
+  bool beforeATCCheck = false;
+  int currentPage = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,23 +90,40 @@ class _MutationState extends State<Mutation> {
                 })
               },
             ),
-            const Row(
+            //session display
+            Row(
               children: [
                 Option(
                   label: '5 Phiên',
-                  isSelected: true,
+                  isSelected: sessionDisplay == 5,
+                  onTap: () => {
+                    setState(() => {
+                          sessionDisplay = 5,
+                          beforeATCCheck = false,
+                        })
+                  },
                 ),
                 Option(
                   label: '20 Phiên',
-                  isSelected: false,
+                  isSelected: sessionDisplay == 20 && beforeATCCheck == false,
+                  onTap: () => {
+                    setState(() => {
+                          sessionDisplay = 20,
+                          beforeATCCheck = false,
+                        })
+                  },
                 ),
                 Option(
                   label: '20 Phiên trước ATC',
-                  isSelected: false,
+                  isSelected: sessionDisplay == 20 && beforeATCCheck == true,
+                  onTap: () => {
+                    setState(() => {sessionDisplay = 20, beforeATCCheck = true})
+                  },
                 ),
               ],
             ),
-            const Row(
+            //filter
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Filter(
@@ -127,8 +146,14 @@ class _MutationState extends State<Mutation> {
             ),
             MutationTable(
                 data: tableData
-                    .where((List<String> element) => searchKey.isNotEmpty ? element[0].toLowerCase().contains(searchKey.toLowerCase()): true)
-                    .toList(),
+                    .where((List<String> element) => searchKey.isNotEmpty
+                        ? element[0]
+                            .toLowerCase()
+                            .contains(searchKey.toLowerCase())
+                        : true)
+                    .toList()
+                    .sublist((currentPage - 1) * sessionDisplay,
+                        currentPage * sessionDisplay),
                 columns: [
                   new TableColumn(name: 'Mã'),
                   new TableColumn(name: 'Thời gian'),
@@ -136,9 +161,9 @@ class _MutationState extends State<Mutation> {
                       name: 'Khối lượng GD', type: ColumnType.number),
                 ]),
             PaginationBar(
-              currentPage: 1,
-              totalPages: 10,
-              onPageSelected: (p0) => {},
+              currentPage: currentPage,
+              totalPages: (tableData.length / sessionDisplay).ceil(),
+              onPageSelected: (page) => {setState(() => currentPage = page)},
             )
           ],
         ),

@@ -5,10 +5,12 @@ import '../constants/color.dart';
 class Option extends StatelessWidget {
   final String label;
   final bool isSelected;
+  VoidCallback? onTap = (){};
 
-  const Option({
+  Option({
     required this.label,
     required this.isSelected,
+    this.onTap,
   });
 
   @override
@@ -21,11 +23,14 @@ class Option extends StatelessWidget {
         color: isSelected ? colors.primaryColor : colors.secondaryBackgroundColor,
         borderRadius: BorderRadius.circular(4),
       ),
-      child: Text(
-        label,
-        style: TextStyle(
-          color: isSelected ? colors.textPrimaryColor : colors.textSecondaryColor,
-          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Text(
+          label,
+          style: TextStyle(
+            color: isSelected ? colors.textPrimaryColor : colors.textSecondaryColor,
+            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+          ),
         ),
       ),
     );
