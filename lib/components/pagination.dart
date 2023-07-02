@@ -31,7 +31,7 @@ class PaginationBar extends StatelessWidget {
             icon: Icon(Icons.chevron_left),
             onPressed: (currentPage > 1)
                 ? () => onPageSelected(currentPage - 1)
-                : ()=>null,
+                : () => null,
           ),
         ),
         if (currentPage > 3) ...[
@@ -58,7 +58,7 @@ class PaginationBar extends StatelessWidget {
             icon: Icon(Icons.chevron_right),
             onPressed: (currentPage < totalPages)
                 ? () => onPageSelected(currentPage + 1)
-                : null,
+                : () => null,
           ),
         ),
       ],
@@ -87,7 +87,7 @@ class PaginationBar extends StatelessWidget {
     return IconButton(
       color: AppColors().textPrimaryColor,
       icon: Icon(Icons.more_horiz),
-      onPressed: ()=>null,
+      onPressed: () => null,
     );
   }
 }
