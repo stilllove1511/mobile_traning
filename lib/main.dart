@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_traning/screen/home.dart';
 import 'package:mobile_traning/screen/mutation.dart';
 
 import 'constants/color.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const Mutation(),
+      home: const Home(),
     );
   }
 }

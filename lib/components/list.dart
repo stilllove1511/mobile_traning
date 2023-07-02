@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_traning/constants/color.dart';
+import 'package:mobile_traning/screen/home.dart';
 import 'package:mobile_traning/utils/logger.dart';
 
 enum ColumnType { text, number }
@@ -93,6 +94,12 @@ class MutationTable extends StatelessWidget {
                                       .arrow_forward_ios), // Icon dấu mũi tên điều hướng sang phải
                                   onPressed: () {
                                     // Xử lý sự kiện khi nhấn vào icon
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Home(),
+                                      ),
+                                    );
                                   },
                                   color: colors.textSecondaryColor,
                                 )),
