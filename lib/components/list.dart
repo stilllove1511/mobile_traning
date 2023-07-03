@@ -3,6 +3,8 @@ import 'package:mobile_traning/constants/color.dart';
 import 'package:mobile_traning/screen/home.dart';
 import 'package:mobile_traning/utils/logger.dart';
 
+import '../screen/detail.dart';
+
 enum ColumnType { text, number }
 
 class TableColumn {
@@ -10,7 +12,7 @@ class TableColumn {
   final String label;
   ColumnType? type = ColumnType.text;
 
-  TableColumn({required this.name,required this.label, this.type});
+  TableColumn({required this.name, required this.label, this.type});
 }
 
 class MutationTable extends StatelessWidget {
@@ -97,7 +99,8 @@ class MutationTable extends StatelessWidget {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => Home(),
+                                        builder: (context) =>
+                                            Detail(code: data[index]['code']),
                                       ),
                                     );
                                   },
