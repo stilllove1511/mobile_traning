@@ -39,6 +39,7 @@ dependencies:
   flutter_web_pagination: ^0.0.3
   number_pagination: ^0.0.3+2
   webview_flutter: ^4.2.2
+  flutter_inappwebview: ^5.0.0
 
 dev_dependencies:
   flutter_test:
